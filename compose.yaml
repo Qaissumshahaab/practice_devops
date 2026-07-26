@@ -1,0 +1,27 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: frontend:v1
+    container_name: frontend
+
+    ports:
+      - "5173:80"
+
+    networks:
+      - frontend_network
+
+    deploy:
+      resources:
+        limits:
+          cpus: "1.0"
+          memory: 512M
+        reservations:
+          cpus: "0.5"
+          memory: 256M
+
+networks:
+  frontend_network:
+    driver: bridge
