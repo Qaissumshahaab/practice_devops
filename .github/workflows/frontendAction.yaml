@@ -1,0 +1,19 @@
+name: Frontend CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  
+jobs:
+  deploy_frontend:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: making script executable
+        run: chmod +x ./deploy.sh
+
+      - name: Deploy frontend
+        run: ./deploy.sh
